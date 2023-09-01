@@ -34,6 +34,7 @@
 6. install complete & reboot
 
 7. fix datetime
+- timedatectl set-timezone Asia/Shanghai
 - yum -y install ntp ntpdate
 - ntpdate cn.pool.ntp.org
 - hwclock --systohc

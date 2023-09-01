@@ -10,8 +10,7 @@
 ## install
 - systemctl start vsftpd
 - systemctl enable vsftpd
-- firewall-cmd --zone=public --add-port=30021/tcp --permanent
-- firewall-cmd --zone=public --add-port=30020/tcp --permanent
+- firewall-cmd --zone=public --add-port=30021-30030/tcp --permanent
 - firewall-cmd --add-service=ftp --permanent
 - firewall-cmd --reload
 
@@ -46,7 +45,9 @@ pam_service_name=ftp_vuser_auth
 guest_enable=YES
 guest_username=ftpuser
 user_config_dir=/etc/vsftpd/vsftpd_user_conf
+anon_umask=022
 `
+
 - mkdir /etc/vsftpd/vsftpd_user_conf
 - cat > /etc/vsftpd/vsftpd_user_conf/houwenyao <<EOF
 write_enable=YES
@@ -56,6 +57,25 @@ anon_other_write_enable=YES
 local_root=/usr/local/ebid-min/
 EOF
 
+## trouble 550 553 Permision deny
+1. chown -R ftpuser:ftpuser /usr/local/ebid-min
+2. chmod -R 755 /usr/local/ebid-min
+3. make sure nginx.conf use root;
+4.
+- vi /etc/selinux/config
+setenforce disable
+- setenforce 0
+
+
+## modify port (not use)
+- vi /etc/vsftpd/vsftpd.conf
+listen_port=30021
+- vi /etc/services
+ftp             30021/tcp
+ftp             30021/udp
+- systemctl reload vsftpd 
+- netstat -apn|grep vsftpd
+
 ## test on centos
 - yum install ftp -y
 - wget http://mirror.centos.org/centos/7/os/x86_64/Packages/ftp-0.17-67.el7.x86_64.rpm (if needed)
@@ -64,17 +84,5 @@ EOF
 
 ## test on win
 - ftp
-- open 192.168.2.100 30021
+- open 192.168.2.100 30021 (open 8.142.211.10 30021)
 - quote PORT
-
-
-
-
-## add ftp user (not use)
-- mkdir /usr/local/ebid-min
-- useradd -d /usr/local/ebid-min -g ftp -s /sbin/nologin houwenyao
-- chown -R ftp /usr/local/ebid-min/
-- chown -R houwenyao /usr/local/ebid-min
-- chmod -R 775 /usr/local/ebid-min
-- passwd houwenyao
-- hwy@0301

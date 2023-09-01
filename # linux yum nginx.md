@@ -11,6 +11,13 @@
 - firewall-cmd --reload
 - curl localhost
 
+## selinum 解决无法配置80外的其他端口问题
+- vi /etc/selinux/config
+`
+SELINUX = disabled
+`
+- reboot
+
 ## config
 - vi /etc/nginx/nginx.conf
 - /etc/nginx/conf.d/default.conf

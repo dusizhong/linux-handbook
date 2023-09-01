@@ -12,14 +12,19 @@
 
 - grep 'temporary password' /var/log/mysqld.log
 - mysql -uroot -p
-- ALTER USER 'root'@'localhost' IDENTIFIED BY 'fK9@H2tbM';
-- GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'fK9@H2tbM' WITH GRANT OPTION; //allow remote connnect
+- ALTER USER 'root'@'localhost' IDENTIFIED BY 'Uk9CWq*Ak';
+- GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Uk9CWq*Ak' WITH GRANT OPTION; //allow remote connnect
 - FLUSH PRIVILEGES;
+- exit;
 
-- firewall-cmd --state
+- firewall-cmd --state (systemctl start firewalld)
 - firewall-cmd --zone=public --add-port=3306/tcp --permanent
 - firewall-cmd --reload
 
 ## remove rpm
 - rpm -qa | grep mysql
 - yum -y remove mysql57-community-release-el7-10.noarch
+
+
+## config datadir
+- vi /etc/my.cnf

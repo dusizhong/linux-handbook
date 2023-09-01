@@ -2,30 +2,30 @@
 
 ## check info
 - fdisk -l
+- lsblk
+- df -h
 
+### move /home space to /
 
+1. remove old home
+- df -h
+- umount /home
+- lvremove /dev/centos/home
+- vgdisplay
 
+2. create new home
+- lvcreate -L 50G -n home centos
+- lvdisplay
+- vgdisplay
+- vgchange -ay centos
+- mkfs -t xfs /dev/centos/home
+- mount /dev/centos/home /home
+- df -h
 
-2. start install...
-- set language: English
-- set datetime: Asia/Shanghai
-
-3. installation destination
-- select hd-disk and configure partitioning
-- delete unknow partition in list
-- select Standard Partition
-- add boot 500mb
-- add boot/efi 200mb
-- add swap 128G
-- add / avaiable space
-- accept done
-
-4. network settings
-- General: check: Automatically connect to this network when it is available
-- IPv4 Settings: add ip mask gateway dns
-- check: Require IPv4 addressing for this connection to complete
-
-5. set root
-- root Yanfa@0228
-
-6. have done!
+2. extend /
+- vgdisplay
+- lvextend -L +891.12G /dev/centos/root
+- lvdisplay
+- vgchange -ay centos
+- xfs_growfs /dev/centos/root
+- df -h
