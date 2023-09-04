@@ -1,0 +1,6 @@
+1°¢Ω‚—π
+D:\nginx
+
+nginx -s stop
+nginx -s reload
+nginx -s quit

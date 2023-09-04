@@ -1,0 +1,31 @@
+1、解压
+D:\mysql
+
+2、配置环境变量
+新增用户变量：MYSQL_HOME = D:\mysql
+在系统变量Path中添加D:\mysql\bin
+
+2、配置my.ini
+basedir=D:\mysql
+datadir=D:\mysql\data
+
+3、安装MySQL服务
+cd D:\mysql\bin
+mysqld -install
+
+4、启动
+net start mysql
+
+5、连接、修改密码(首次安装无密码)
+mysql -u root -p
+grant all on *.* to 'root'@'localhost' identified by '1234';
+
+
+* 修改root密码
+cd D:\mysql\bin
+mysqld_safe --skip-grant-tables &
+mysql -u root -p
+use mysql;
+update user set password=password('1234') where user='root';
+flush privileges;
+exit;

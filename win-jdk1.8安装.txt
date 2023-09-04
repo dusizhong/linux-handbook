@@ -1,0 +1,54 @@
+一、jdk安装
+1、安装jdk，目录D:\java
+2、新增用户变量：JAVA_HOME D:\java\jdk1.8.0_181
+3、新增系统变量：CLASSPATH .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
+4、系统变量Path中添加：
+D:\Java\jdk1.8.0_181\bin
+D:\Java\jre
+
+二、mysql5.6安装
+1、解压安装包到D:\mysql
+2、设置环境变量：
+用户环境变量添加 MYSQL_HOME D:\mysql
+系统环境变量Path中添加D:\mysql\bin
+3、配置my.ini文件
+basedir = D:\mysql
+datadir = D:\mysql\data
+4、安装 mysqld -install
+5、启动 net start mysql
+6、更改root密码
+mysql -u root -p
+select user, password from mysql.user;
+set password for root@localhost=password('root');
+
+三、nodejs安装
+1、下载nodejs.zip
+2、解压D:\node
+3、系统环境变量Path中添加D:\node
+4、测试node -v   npm -v
+
+四、vue安装
+1、npm install --g @vue/cli
+2、创建测试项目 vue create test
+3、启动项目 npm run serve
+4、构建项目 npm run build
+
+五、nginx安装
+1、下载nginx
+2、解压D:\nginx
+3、start nginx //启动
+nginx -s stop    //停止
+nginx -s reload    //重新加载
+nginx -s quit    //退出
+4、部署vue或react单页应用
+修改nginx.conf，添加新server
+server {
+        listen       8000;
+        server_name  localhost;
+        location / {
+            root   html/dist;
+            index  index.html index.htm;
+        }
+    }
+
+
