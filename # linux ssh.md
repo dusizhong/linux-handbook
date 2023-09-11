@@ -4,7 +4,8 @@
 ...
 
 ## add public key
-
+- su houwenyao
+- mkdir .ssh
 - vi ~/.ssh/authorized_keys
 - add pub key
 `
@@ -15,6 +16,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3L8q8JapFVbKNvIt2//++be9XBE4aiGZFKvVv8ytf
 
 - restorecon -R -v /home
 
+- su root
 - vi /etc/ssh/sshd_config
 `
 PasswordAuthentication no (禁用密码登录，可选)

@@ -20,6 +20,11 @@ SELINUX = disabled
 
 ## config
 - vi /etc/nginx/nginx.conf
+`
+http {
+	client_max_body_size 1024m;
+}
+`
 - /etc/nginx/conf.d/default.conf
 - cp default.conf yoursite.conf
 - vi yoursite.conf
