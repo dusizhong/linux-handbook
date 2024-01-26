@@ -11,3 +11,10 @@
 - 查看目录 du -sh xx
 
 
+## 服务无法curl访问带域名网站处理（调用互联网API接口(腾讯、阿里)等出现“未知名称或服务”）
+-  vi /etc/resolv.conf
+`
+nameserver 8.8.8.8
+`
+
+
