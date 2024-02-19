@@ -27,3 +27,16 @@ AuthorizedKeysFile .ssh/authorized_keys
 `
 
 - systemctl restart sshd.service
+
+
+## modify ssh port
+- firewall-cmd --list-all
+- firewall-cmd --zone=public --add-port=19520/tcp --permanent
+- firewall-cmd --reload
+- vi /etc/ssh/sshd_config
+`
+Port 22
+Port 19520
+`
+- systemctl restart sshd.service
+- systemctl status sshd
