@@ -25,6 +25,23 @@ http {
 - vi yoursite.conf
 - chmod -R 755 /usr/local/yoursite
 
+## 配置微服务转发
+`
+server {
+    listen       80;
+    server_name  api.hbsgzygzc.com;
+
+    location / {
+        proxy_pass    http://192.168.0.115:5020;
+        #得到请求真实IP
+        proxy_set_header    X-Real-IP        $remote_addr;
+        proxy_set_header    X-Forwarded-For  $proxy_add_x_forwarded_for;
+        proxy_set_header    HTTP_X_FORWARDED_FOR $remote_addr;
+        proxy_set_header    X-Forwarded-Proto $scheme;
+        proxy_redirect      default;
+    }
+}
+`
 ## 配置websocket转发
 `
 location /ws {

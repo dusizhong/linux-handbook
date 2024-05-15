@@ -6,7 +6,7 @@
 - useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
 - sudo yum install wget
 - cd ~
-- wget https://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.87/bin/apache-tomcat-8.5.87.tar.gz
+- wget https://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.99/bin/apache-tomcat-8.5.99.tar.gz --no-check-certificate
 - mkdir /opt/tomcat
 - tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
 - cd /opt/tomcat

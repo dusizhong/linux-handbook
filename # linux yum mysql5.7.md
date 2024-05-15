@@ -12,8 +12,8 @@
 
 - grep 'temporary password' /var/log/mysqld.log
 - mysql -uroot -p
-- ALTER USER 'root'@'localhost' IDENTIFIED BY 'Uk9CWq*Ak';
-- GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Uk9CWq*Ak' WITH GRANT OPTION; //allow remote connnect
+- ALTER USER 'root'@'localhost' IDENTIFIED BY 'G3Hu8M*9Sk';
+- GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'G3Hu8M*9Sk' WITH GRANT OPTION; //allow remote connnect
 - FLUSH PRIVILEGES;
 - exit;
 

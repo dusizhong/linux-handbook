@@ -1,4 +1,15 @@
-# linux usage
+# ubuntu server 22.04
+
+## command
+- ls /usr/bin 查看所有命令
+- man ls 查看命令帮助
+- ls --help 查看命令帮助
+
+## apt
+- sudo apt update
+- sudo apt upgrade
+- suod apt install
+
 
 ## usage
 - 文件大小前50排序 du -h * 2>/dev/null | sort -rh | head -50
@@ -17,7 +28,7 @@
 nameserver 8.8.8.8
 `
 
-## 配置无线网卡
+## wifi settings
 - sudo apt install net-tools wpasupplicant
 - ls /sys/class/net/
 - ifconfig -a
